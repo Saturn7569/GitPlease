@@ -33,6 +33,7 @@ if "%inp%" EQU "3" goto fninit
 if "%inp%" EQU "4" goto fnaddall
 if "%inp%" EQU "5" goto fncommit
 if "%inp%" EQU "6" goto fnbranch
+if "%inp%" EQU "7" goto fnremote
 echo invalid input
 pause
 goto inp
@@ -50,7 +51,6 @@ pause
 goto inp
 
 :fnaddall
-cls
 git add .
 echo Staged all files
 pause
@@ -110,6 +110,34 @@ set /p inp=Enter new branch name:
 git branch -M %inp%
 pause
 goto fnbranch
+
+:fnremote
+cls
+echo Current remotes:
+git remote -v
+echo.
+echo    1.  Exit
+echo.
+set /p inp=Select an option: 
+if "%inp%" EQU "1" goto inp
+echo Invalid input
+pause
+goto fnremote
+
+:rmadd
+set /p name=Enter origin name: 
+set /p adr=Enter origin adress: 
+git remote add %name% %adr%
+pause
+goto fnremote
+
+:rmpush
+set /p name=Enter origin name: 
+git branch
+set /p inp=Enter branch to push: 
+git push %name% %inp%
+pause
+goto fnremote
 
 :exit
 cls
