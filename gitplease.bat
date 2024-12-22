@@ -22,6 +22,7 @@ echo    3.  Initialize repository
 echo    4.  Stage all files
 echo    5.  Commit
 echo    6.  Branch
+echo    7.  Remote
 echo.
 
 rem call :logo
@@ -72,9 +73,12 @@ echo    1.  Exit
 echo    2.  New branch
 echo    3.  Delete branch
 echo    4.  Checkout branch
+echo    5.  Rename branch
 echo.
 set /p inp=Select an option: 
 if "%inp%" EQU "1" goto inp
+if "%inp%" EQU "2" goto brnew
+if "%inp%" EQU "3" goto brdel
 if "%inp%" EQU "4" goto brcheck
 echo Invalid input
 pause
@@ -85,6 +89,18 @@ set /p inp=Enter branch name or ID:
 git checkout %inp%
 rem print the branch but it is not needed
 rem echo Changed branch to %inp%
+pause
+goto fnbranch
+
+:brnew
+set /p inp=Enter branch name: 
+git branch %inp%
+pause
+goto fnbranch
+
+:brdel
+set /p inp=Enter branch name or ID: 
+git branch -d %inp%
 pause
 goto fnbranch
 
