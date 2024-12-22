@@ -73,13 +73,14 @@ echo    1.  Exit
 echo    2.  New branch
 echo    3.  Delete branch
 echo    4.  Checkout branch
-echo    5.  Rename branch
+echo    5.  Rename current branch
 echo.
 set /p inp=Select an option: 
 if "%inp%" EQU "1" goto inp
 if "%inp%" EQU "2" goto brnew
 if "%inp%" EQU "3" goto brdel
 if "%inp%" EQU "4" goto brcheck
+if "%inp%" EQU "5" goto brrename
 echo Invalid input
 pause
 goto fnbranch
@@ -101,6 +102,12 @@ goto fnbranch
 :brdel
 set /p inp=Enter branch name or ID: 
 git branch -d %inp%
+pause
+goto fnbranch
+
+:brrename
+set /p inp=Enter new branch name: 
+git branch -M %inp%
 pause
 goto fnbranch
 
