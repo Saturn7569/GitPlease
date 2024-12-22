@@ -45,7 +45,6 @@ pause
 goto inp
 
 :fninit
-cls
 git init
 pause
 goto inp
@@ -57,7 +56,6 @@ pause
 goto inp
 
 :fncommit
-cls
 set /p inp=Enter commit message: 
 git commit -m "%inp%"
 pause
