@@ -117,7 +117,7 @@ echo.
 echo    1.  Exit
 echo    2.  Add origin
 echo    3.  Remove origin
-echo    4.  Push origin
+echo    4.  Push all commits to origin
 echo    5.  Pull origin
 echo.
 set /p inp=Select an option: 
@@ -147,7 +147,7 @@ goto fnremote
 set /p name=Enter origin name: 
 git branch
 set /p inp=Enter branch to push: 
-git push %name% %inp%
+git push -u %name% %inp%
 pause
 goto fnremote
 
