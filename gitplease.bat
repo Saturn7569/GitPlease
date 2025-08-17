@@ -64,55 +64,11 @@ pause
 goto inp
 
 :fnbranch
-cls
-echo Current branches:
-echo.
-git branch -v
-echo.
-echo    1.  Exit
-echo    2.  New branch
-echo    3.  Delete branch
-echo    4.  Checkout branch
-echo    5.  Rename current branch
-echo.
-set /p inp=Select an option: 
-if "%inp%" EQU "1" goto inp
-if "%inp%" EQU "2" goto brnew
-if "%inp%" EQU "3" goto brdel
-if "%inp%" EQU "4" goto brcheck
-if "%inp%" EQU "5" goto brrename
-echo Invalid input
-pause
-goto fnbranch
-
-:brcheck
-set /p inp=Enter branch name or ID: 
-git checkout %inp%
-rem print the branch but it is not needed
-rem echo Changed branch to %inp%
-pause
-goto fnbranch
-
-:brnew
-set /p inp=Enter branch name: 
-git branch %inp%
-pause
-goto fnbranch
-
-:brdel
-set /p inp=Enter branch name or ID: 
-git branch -d %inp%
-pause
-goto fnbranch
-
-:brrename
-set /p inp=Enter new branch name: 
-git branch -M %inp%
-pause
-goto fnbranch
+start %~dp0branch.bat
+goto inp
 
 :fnremote
-start %~dp0remote
+start %~dp0remote.bat
 goto inp
 
 :exit

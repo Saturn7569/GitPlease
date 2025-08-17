@@ -1,6 +1,6 @@
 @echo off
 
-title GitPlease! Remote
+title GitPlease! Remote manager
 
 :inp
 cls
